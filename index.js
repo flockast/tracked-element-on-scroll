@@ -8,9 +8,7 @@
 function trackedElementOnScroll(element, className, percent = 0, removeClass = false) {
     if(element === undefined || className === undefined) return false;
     window.addEventListener("scroll", () => {
-        const windowHeight = window.innerHeight;
-        const elementFromTop = element.getBoundingClientRect().top;
-        if(elementFromTop - windowHeight * (100 - percent) / 100 < 0) {
+        if(element.getBoundingClientRect().top - window.innerHeight * (100 - percent) / 100 < 0) {
             element.classList.add(className);
             if(removeClass) element.classList.remove(removeClass);
         } else {
